@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @media print {
+        /* 隐藏所有元素 */
+        :not(#needPrint) {
+          visibility: hidden;
+        }
+
+        /* 显示需要打印的区域以及子元素的样式为可见 */
+        #needPrint,
+        #needPrint * {
+          visibility: visible;
+        }
+
+        /* 更改为绝对定位左上角对齐 */
+        #needPrint {
+          position: absolute;
+          left: 0;
+          top: 0;
+          background-color: #222;
+          color: #fff;
+        }
+
+        @page {
+          size: 10cm 10cm;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="p">测试按钮</button>
+
+    <div id="needPrint">
+      <h2>测试1</h2>
+      <h2>测试2</h2>
+      <h2>测试3</h2>
+      <h2>测试4</h2>
+    </div>
+
+    <script>
+      document.getElementById("p").addEventListener("click", printContent);
+      function printContent() {
+        // let printContents = document.getElementById("needPrint").innerHTML;
+        // let originalContents = document.body.innerHTML;
+        // document.body.innerHTML = printContents;
+        window.print();
+        // document.body.innerHTML = originalContents;
+      }
+    </script>
+  </body>
+</html>
